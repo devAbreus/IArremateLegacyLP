@@ -35,7 +35,7 @@ export default function Home() {
         </header>
 
         {/* Main content */}
-        <main className="flex items-center min-h-[calc(100vh-160px)] pl-4 pr-8 md:pl-6 md:pr-10 lg:pl-8 lg:pr-12 -mt-16">
+        <main className="flex items-center min-h-[calc(100vh-160px)] pl-2 pr-8 md:pl-3 md:pr-10 lg:pl-4 lg:pr-12 -mt-16">
           <div className="max-w-7xl mx-auto w-full">
             <div className="max-w-5xl">
               {/* Main title */}
