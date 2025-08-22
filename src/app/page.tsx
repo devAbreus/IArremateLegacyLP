@@ -40,8 +40,8 @@ export default function Home() {
             <div className="max-w-5xl">
               {/* Main title */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#D4A574] leading-[1.1] mb-6">
-                O MERCADO DE ARTE COMO VOCÊ<br />
-                NUNCA VIU: EM NÚMEROS
+                <span className="whitespace-nowrap">O MERCADO DE ARTE COMO VOCÊ</span><br />
+                <span className="whitespace-nowrap">NUNCA VIU: EM NÚMEROS</span>
               </h1>
               
               {/* Subtitle */}
