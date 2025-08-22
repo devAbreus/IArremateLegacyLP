@@ -36,7 +36,7 @@ export default function Home() {
 
         {/* Main content */}
         <main className="flex items-center min-h-[calc(100vh-160px)] pl-2 pr-8 md:pl-3 md:pr-10 lg:pl-4 lg:pr-12 -mt-16">
-          <div className="max-w-7xl mx-auto w-full">
+          <div className="w-full">
             <div className="max-w-5xl">
               {/* Main title */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-[#D4A574] leading-[1.1] mb-6">
