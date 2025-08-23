@@ -30,20 +30,22 @@ export default function Home() {
       {/* Content wrapper */}
       <div className="relative z-20 min-h-screen">
         {/* Header with logo */}
-        <header className="pt-8 md:pt-10 lg:pt-12 px-6 sm:px-8 md:px-10 lg:px-12">
-          <Image
-            src="/images/iArremateLegacyWhite.png"
-            alt="Legacy Logo"
-            width={1080}
-            height={60}
-            className="h-20 sm:h-14 md:h-20 w-auto"
-            priority
-          />
+        <header className="w-full pt-8 md:pt-10 lg:pt-12">
+          <div className="max-w-[1400px] mx-auto px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
+            <Image
+              src="/images/iArremateLegacyWhite.png"
+              alt="Legacy Logo"
+              width={300}
+              height={50}
+              className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto lg:-ml-24"
+              priority
+            />
+          </div>
         </header>
 
         {/* Main content */}
-        <main className="relative z-20 flex items-center justify-start min-h-[calc(100vh-160px)] px-6 sm:px-8 md:px-10 lg:px-12 -mt-8 sm:-mt-12 md:-mt-8 lg:-mt-4">
-          <div className="max-w-7xl md:mx-32 w-full">
+        <main className="relative z-20 flex items-center justify-start min-h-[calc(100vh-160px)] -mt-8 sm:-mt-12 md:-mt-8 lg:-mt-4">
+          <div className="max-w-[1400px] mx-auto px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 w-full">
             <div className="max-w-[720px] md:max-w-[800px] lg:max-w-[900px]">
               {/* Main title */}
               <h1 className="text-[#B69355] font-semibold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-7xl mb-4 sm:mb-6 text-center md:text-left">
@@ -73,22 +75,22 @@ export default function Home() {
     </div>
 
     {/* Section 2: O Problema */}
-    <section className="bg-white overflow-hidden">
-      {/* Logo vermelha no mesmo padrão de tamanho e alinhamento */}
-      <div className="px-6 sm:px-8 md:px-10 lg:px-12 pt-12 sm:pt-16 lg:pt-20">
-        <Image
-          src="/images/iArremateLegacyRed.png"
-          alt="Legacy Logo Red"
-          width={1080}
-          height={60}
-          className="h-20 sm:h-14 md:h-20 w-auto mb-8 sm:mb-10 lg:mb-12"
-          priority
-        />
-      </div>
-
-      {/* Conteúdo alinhado com primeira seção */}
-      <div className="px-6 sm:px-8 md:px-10 lg:px-12 pb-12 sm:pb-16 lg:pb-20">
-        <div className="max-w-[1440px] 2xl:max-w-[1600px] md:mx-32 w-full">
+    <section className="bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Logo vermelha com menos margem */}
+        <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
+          <Image
+            src="/images/iArremateLegacyRed.png"
+            alt="Legacy Logo Red"
+            width={300}
+            height={50}
+            className="h-16 sm:h-18 md:h-20 lg:h-24 w-auto lg:-ml-24"
+            priority
+          />
+        </div>
+        
+        {/* Conteúdo com margem normal */}
+        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-8 sm:mt-10 lg:mt-12">
           <div className="flex flex-col lg:flex-row items-start gap-10 md:gap-12 lg:gap-16">
             {/* Texto à esquerda */}
             <div className="max-w-[720px] md:max-w-[800px] lg:max-w-[600px]">
@@ -108,14 +110,16 @@ export default function Home() {
 
             {/* Ilustração à direita */}
             <div className="flex-1 flex justify-center lg:justify-end">
-              <Image
-                src="/images/section2.png"
-                alt="Indicadores do mercado de arte"
-                width={1600}
-                height={1140}
-                className="w-full max-w-[1000px] sm:max-w-[1150px] md:max-w-[1250px] lg:max-w-[1300px] xl:max-w-[1500px] 2xl:max-w-[1600px] h-auto object-contain"
-                priority
-              />
+              <div className="w-full relative" style={{ transform: 'scale(1.8)', transformOrigin: 'center' }}>
+                <Image
+                  src="/images/section2.png"
+                  alt="Indicadores do mercado de arte"
+                  width={1600}
+                  height={1140}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -141,21 +145,22 @@ export default function Home() {
       </div>
 
       {/* Conteúdo */}
-      <div className="relative z-10">
-        {/* Container com padding padrão */}
-        <div className="px-6 sm:px-8 md:px-10 lg:px-12 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
-          {/* Logo branca com mais espaçamento abaixo */}
-          <Image
-            src="/images/iArremateLegacyWhite.png"
-            alt="Legacy Logo White"
-            width={1080}
-            height={60}
-            className="h-20 sm:h-14 md:h-20 w-auto mb-12 sm:mb-14 lg:mb-16 pb-4"
-            priority
-          />
+      <div className="relative z-10 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Logo branca com menos margem */}
+          <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
+            <Image
+              src="/images/iArremateLegacyWhite.png"
+              alt="Legacy Logo White"
+              width={300}
+              height={50}
+              className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto lg:-ml-24"
+              priority
+            />
+          </div>
 
-          {/* Grid de duas colunas */}
-          <div className="max-w-[1440px] 2xl:max-w-[1600px] md:mx-32 w-full">
+          {/* Grid de duas colunas com margem normal */}
+          <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-12 sm:mt-14 lg:mt-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20">
               {/* Coluna esquerda - Título e descrição principal */}
               <div className="max-w-[600px]">
@@ -194,21 +199,22 @@ export default function Home() {
     </section>
 
     {/* Section 4: BENEFÍCIOS TANGÍVEIS */}
-    <section className="bg-white overflow-hidden">
-      {/* Container com padding padrão */}
-      <div className="px-6 sm:px-8 md:px-10 lg:px-12 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
-        {/* Logo vermelha */}
-        <Image
-          src="/images/iArremateLegacyRed.png"
-          alt="Legacy Logo Red"
-          width={1080}
-          height={60}
-          className="h-20 sm:h-14 md:h-20 w-auto mb-12 sm:mb-14 lg:mb-16"
-          priority
-        />
+    <section className="bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Logo vermelha com menos margem */}
+        <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
+          <Image
+            src="/images/iArremateLegacyRed.png"
+            alt="Legacy Logo Red"
+            width={300}
+            height={50}
+            className="h-16 sm:h-18 md:h-20 lg:h-24 w-auto lg:-ml-24"
+            priority
+          />
+        </div>
 
-        {/* Grid de duas colunas */}
-        <div className="max-w-[1440px] 2xl:max-w-[1600px] md:mx-32 w-full">
+        {/* Grid de duas colunas com margem normal */}
+        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-12 sm:mt-14 lg:mt-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center">
             {/* Coluna esquerda - Conteúdo de texto */}
             <div className="max-w-[700px]">
@@ -240,14 +246,16 @@ export default function Home() {
 
             {/* Coluna direita - Ilustração */}
             <div className="flex justify-center lg:justify-end">
-              <Image
-                src="/images/section4.png"
-                alt="Análise de dados e métricas"
-                width={800}
-                height={600}
-                className="w-full max-w-[500px] lg:max-w-[600px] xl:max-w-[700px] h-auto object-contain"
-                priority
-              />
+              <div className="w-full relative" style={{ transform: 'scale(1.8)', transformOrigin: 'center' }}>
+                <Image
+                  src="/images/section4.png"
+                  alt="Análise de dados e métricas"
+                  width={800}
+                  height={600}
+                  className="w-full h-auto object-contain"
+                  priority
+                />
+              </div>
             </div>
           </div>
         </div>
@@ -273,20 +281,22 @@ export default function Home() {
       </div>
 
       {/* Conteúdo */}
-      <div className="relative z-10">
-        <div className="px-6 sm:px-8 md:px-10 lg:px-12 pt-12 sm:pt-16 lg:pt-20 pb-12 sm:pb-16 lg:pb-20">
-          {/* Logo branca */}
-          <Image
-            src="/images/iArremateLegacyWhite.png"
-            alt="Legacy Logo White"
-            width={1080}
-            height={60}
-            className="h-20 sm:h-14 md:h-20 w-auto mb-12 sm:mb-14 lg:mb-16"
-            priority
-          />
+      <div className="relative z-10 py-12 sm:py-16 lg:py-20">
+        <div className="max-w-[1400px] mx-auto">
+          {/* Logo branca com menos margem */}
+          <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
+            <Image
+              src="/images/iArremateLegacyWhite.png"
+              alt="Legacy Logo White"
+              width={300}
+              height={50}
+              className="h-14 sm:h-16 md:h-18 lg:h-20 w-auto lg:-ml-24"
+              priority
+            />
+          </div>
 
-          {/* Container do conteúdo */}
-          <div className="max-w-[1440px] 2xl:max-w-[1600px] md:mx-32 w-full">
+          {/* Container do conteúdo com margem normal */}
+          <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-12 sm:mt-14 lg:mt-16">
             <div className="max-w-[1100px]">
               {/* Texto do depoimento */}
               <div className="space-y-6 mb-8 lg:mb-10">
