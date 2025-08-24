@@ -61,7 +61,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
         {/* Botão de fechar elegante */}
         <button
           onClick={handleClosePopup}
-          className="absolute top-6 right-6 z-30 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 group"
+          className="absolute top-6 right-6 z-30 w-10 h-10 flex items-center justify-center rounded-full bg-white/10 backdrop-blur-sm hover:bg-white/20 transition-all duration-300 group cursor-pointer"
           aria-label="Fechar"
         >
           <svg className="w-6 h-6 text-white group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -99,19 +99,19 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
 
               {/* Mensagem de sucesso centralizada */}
               <div className="max-w-[900px] mx-auto text-center space-y-5 -mt-8">
-                <h2 className="text-white text-2xl lg:text-3xl xl:text-4xl font-normal leading-tight mb-6">
+                <h2 className="text-[#EEEAD6] text-2xl lg:text-3xl xl:text-4xl font-normal leading-tight mb-6">
                   Inscrição recebida com sucesso!
                 </h2>
                 
-                <p className="text-white text-lg lg:text-xl xl:text-2xl font-light leading-relaxed">
+                <p className="text-[#EEEAD6] text-lg lg:text-xl xl:text-2xl font-light leading-relaxed">
                   Obrigado por se cadastrar na lista prioritária de acesso antecipado ao iArremate Legacy.
                 </p>
                 
-                <p className="text-white text-base lg:text-lg xl:text-xl font-light leading-relaxed px-8">
+                <p className="text-[#EEEAD6] text-base lg:text-lg xl:text-xl font-light leading-relaxed px-8">
                   Em breve, você receberá um e-mail com instruções para ativar sua assinatura e aproveitar os recursos exclusivos antes do lançamento oficial.
                 </p>
                 
-                <p className="text-white text-lg lg:text-xl font-normal mt-8 pt-4">
+                <p className="text-[#EEEAD6] text-lg lg:text-xl font-normal mt-8 pt-4">
                   São poucas vagas.
                 </p>
               </div>
@@ -147,7 +147,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
             <div
               className="absolute inset-0"
               style={{ 
-                background: 'linear-gradient(135deg, rgba(31, 43, 59, 0.95) 0%, rgba(31, 43, 59, 0.88) 100%)'
+                background: 'linear-gradient(135deg, rgba(24, 37, 54, 0.96) 0%, rgba(24, 37, 54, 0.96)100%)'
               }}
             />
 
@@ -284,7 +284,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
                 {/* Botão de enviar elegante */}
                 <button
                   type="submit"
-                  className="w-full mt-6 bg-[#B69355] hover:bg-[#9A7F4A] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl uppercase tracking-wider text-sm"
+                  className="w-full mt-6 bg-[#B69355] hover:bg-[#9A7F4A] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl uppercase tracking-wider text-sm cursor-pointer"
                 >
                   Confirmar inscrição
                 </button>

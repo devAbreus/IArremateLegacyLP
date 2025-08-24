@@ -64,7 +64,7 @@ export default function Home() {
               {/* CTA Button */}
               <button 
                 onClick={() => setIsPopupOpen(true)}
-                className="bg-[#B69355] hover:bg-[#C89A64] text-[#1A1F2E] font-semibold px-6 py-4 text-sm md:text-base rounded-full transition-all duration-300 hover:shadow-lg uppercase tracking-wider w-full sm:w-auto"
+                className="bg-[#B69355] hover:bg-[#C89A64] text-[#1A1F2E] font-semibold px-6 py-4 text-sm md:text-base rounded-full transition-all duration-300 hover:shadow-lg uppercase tracking-wider w-full sm:w-auto cursor-pointer"
               >
                 QUERO ACESSO ANTECIPADO
               </button>
@@ -75,7 +75,7 @@ export default function Home() {
     </div>
 
     {/* Section 2: O Problema */}
-    <section className="bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
+    <section className="bg-white overflow-hidden pt-8 md:pt-10 lg:pt-12 pb-20 sm:pb-24 lg:pb-32">
       <div className="max-w-[1400px] mx-auto">
         {/* Logo vermelha com menos margem */}
         <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
@@ -90,7 +90,7 @@ export default function Home() {
         </div>
         
         {/* Conteúdo com margem normal */}
-        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-8 sm:mt-10 lg:mt-12">
+        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
           <div className="flex flex-col lg:flex-row items-start gap-10 md:gap-12 lg:gap-16">
             {/* Texto à esquerda */}
             <div className="max-w-[720px] md:max-w-[800px] lg:max-w-[600px]">
@@ -140,12 +140,12 @@ export default function Home() {
         {/* Overlay azul escuro sobre toda a imagem */}
         <div
           className="absolute inset-0"
-          style={{ backgroundColor: "rgba(44, 57, 74, 0.92)" }}
+          style={{ backgroundColor: "rgba(24, 37, 54, 0.96)" }}
         ></div>
       </div>
 
       {/* Conteúdo */}
-      <div className="relative z-10 py-12 sm:py-16 lg:py-20">
+      <div className="relative z-10 pt-8 md:pt-10 lg:pt-12 pb-20 sm:pb-24 lg:pb-32">
         <div className="max-w-[1400px] mx-auto">
           {/* Logo branca com menos margem */}
           <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
@@ -160,14 +160,14 @@ export default function Home() {
           </div>
 
           {/* Grid de duas colunas com margem normal */}
-          <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-12 sm:mt-14 lg:mt-16">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20">
+          <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 lg:items-center">
               {/* Coluna esquerda - Título e descrição principal */}
-              <div className="max-w-[600px]">
+              <div className="max-w-[600px] flex flex-col justify-center -mt-4 lg:-mt-8">
                 <h3 className="text-[#B69355] font-semibold uppercase leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 lg:mb-8">
                   A SOLUÇÃO
                 </h3>
-                <p className="text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+                <p className="text-[#EEEAD6] text-lg sm:text-xl md:text-2xl leading-relaxed">
                   O iArremate Legacy é a primeira plataforma de análise de dados do Brasil dedicada ao mercado de arte.
                 </p>
               </div>
@@ -176,17 +176,17 @@ export default function Home() {
               <div className="max-w-[600px] lg:pr-8">
                 <div className="space-y-6">
                   <div>
-                    <p className="text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+                    <p className="text-[#EEEAD6] text-lg sm:text-xl md:text-2xl leading-relaxed">
                       <span className="font-bold">Índices e relatórios personalizáveis on-demand</span> para medir performance e valor.
                     </p>
                   </div>
                   <div>
-                    <p className="text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+                    <p className="text-[#EEEAD6] text-lg sm:text-xl md:text-2xl leading-relaxed">
                       <span className="font-bold">Material exclusivo para estudos de caso</span> que mostram, em dados reais, como o mercado se comporta.
                     </p>
                   </div>
                   <div>
-                    <p className="text-white text-lg sm:text-xl md:text-2xl leading-relaxed">
+                    <p className="text-[#EEEAD6] text-lg sm:text-xl md:text-2xl leading-relaxed">
                       <span className="font-bold">Insights inéditos</span> capazes de mudar a lógica do colecionismo e transformar a arte em um ativo comparável a qualquer outro investimento.
                     </p>
                   </div>
@@ -199,7 +199,7 @@ export default function Home() {
     </section>
 
     {/* Section 4: BENEFÍCIOS TANGÍVEIS */}
-    <section className="bg-white overflow-hidden py-12 sm:py-16 lg:py-20">
+    <section className="bg-white overflow-hidden pt-8 md:pt-10 lg:pt-12 pb-20 sm:pb-24 lg:pb-32">
       <div className="max-w-[1400px] mx-auto">
         {/* Logo vermelha com menos margem */}
         <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
@@ -214,11 +214,11 @@ export default function Home() {
         </div>
 
         {/* Grid de duas colunas com margem normal */}
-        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-12 sm:mt-14 lg:mt-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 xl:gap-20 items-center">
+        <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+          <div className="flex flex-col lg:flex-row gap-10 lg:gap-8 xl:gap-12 items-center">
             {/* Coluna esquerda - Conteúdo de texto */}
-            <div className="max-w-[700px]">
-              <h2 className="text-[#222344] font-semibold uppercase leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 lg:mb-8">
+            <div className="lg:flex-1">
+              <h2 className="text-[#222344] font-semibold uppercase leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl mb-6 lg:mb-8 lg:whitespace-nowrap">
                 BENEFÍCIOS TANGÍVEIS
               </h2>
               
@@ -245,13 +245,13 @@ export default function Home() {
             </div>
 
             {/* Coluna direita - Ilustração */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-full relative" style={{ transform: 'scale(1.8)', transformOrigin: 'center' }}>
+            <div className="flex-1 flex justify-center lg:justify-end">
+              <div className="w-full relative" style={{ transform: 'scale(2.2)', transformOrigin: 'center' }}>
                 <Image
                   src="/images/section4.png"
                   alt="Análise de dados e métricas"
-                  width={800}
-                  height={600}
+                  width={1600}
+                  height={1140}
                   className="w-full h-auto object-contain"
                   priority
                 />
@@ -276,12 +276,12 @@ export default function Home() {
         {/* Overlay azul escuro */}
         <div
           className="absolute inset-0"
-          style={{ backgroundColor: "rgba(31, 43, 59, 0.92)" }}
+          style={{ backgroundColor: "rgba(24, 37, 54, 0.96)" }}
         ></div>
       </div>
 
       {/* Conteúdo */}
-      <div className="relative z-10 py-12 sm:py-16 lg:py-20">
+      <div className="relative z-10 pt-8 md:pt-10 lg:pt-12 pb-20 sm:pb-24 lg:pb-32">
         <div className="max-w-[1400px] mx-auto">
           {/* Logo branca com menos margem */}
           <div className="px-2 sm:px-3 md:px-4 lg:px-5 xl:px-6">
@@ -296,28 +296,23 @@ export default function Home() {
           </div>
 
           {/* Container do conteúdo com margem normal */}
-          <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-12 sm:mt-14 lg:mt-16">
-            <div className="max-w-[1100px]">
+          <div className="px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 mt-16 sm:mt-20 md:mt-24 lg:mt-32">
+            <div className="w-full">
               {/* Texto do depoimento */}
-              <div className="space-y-6 mb-8 lg:mb-10">
-                <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed font-light">
-                  Um colecionador usou nossa plataforma para calcular
-                  a liquidez de seu acervo e descobriu obras com potencial
-                  de venda rápida e valorização acima da média.
+              <div className="space-y-4 mb-8 lg:mb-10">
+                <p className="text-[#EEEAD6] text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
+                  Um colecionador usou nossa plataforma para calcular a liquidez de seu acervo e descobriu obras com potencial de venda rápida e valorização acima da média.
                 </p>
-                <p className="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl leading-relaxed font-light">
-                  Com isso, diversificou sua carteira e reduziu o risco de
-                  exposição do seu patrimônio, tudo com decisões 100%
-                  baseadas em dados.
+                <p className="text-[#EEEAD6] text-base sm:text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
+                  Com isso, diversificou sua carteira e reduziu o risco de exposição do seu patrimônio, tudo com decisões 100% baseadas em dados.
                 </p>
               </div>
 
               {/* Citação destacada */}
               <div className="mb-12 lg:mb-16">
-                <p className="text-[#B69355] text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-tight font-semibold uppercase">
-                  “O IARREMATE LEGACY É O QUE O MERCADO
-                  <br />
-                  DE ARTE PRECISAVA PARA DAR O PRÓXIMO PASSO.”
+                <p className="text-[#B69355] text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight font-semibold uppercase">
+                  <span className="block">"O IARREMATE LEGACY É O QUE O MERCADO</span>
+                  <span className="block">DE ARTE PRECISAVA PARA DAR O PRÓXIMO PASSO."</span>
                 </p>
               </div>
 
@@ -325,7 +320,7 @@ export default function Home() {
               <div className="flex justify-end">
                 <button 
                   onClick={() => setIsPopupOpen(true)}
-                  className="bg-[#B69355] hover:bg-[#C89A64] text-[#1A1F2E] font-semibold px-8 py-4 text-sm md:text-base rounded-full transition-all duration-300 hover:shadow-lg uppercase tracking-wider"
+                  className="bg-[#B69355] hover:bg-[#C89A64] text-[#1A1F2E] font-semibold px-8 py-4 text-sm md:text-base rounded-full transition-all duration-300 hover:shadow-lg uppercase tracking-wider cursor-pointer"
                 >
                   QUERO ACESSO ANTECIPADO
                 </button>
