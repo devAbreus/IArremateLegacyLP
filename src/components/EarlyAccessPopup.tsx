@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 interface EarlyAccessPopupProps {
@@ -18,11 +18,72 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
   });
   const [isSuccess, setIsSuccess] = useState(false);
 
+  // Controlar scroll do body quando popup abrir/fechar
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup quando componente desmontar
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isOpen]);
+
+  // Função para formatar telefone
+  const formatPhoneNumber = (value: string) => {
+    // Remove tudo que não é número
+    const numbers = value.replace(/\D/g, '');
+    
+    // Limita a 11 dígitos
+    const truncated = numbers.substring(0, 11);
+    
+    // Aplica a formatação
+    if (truncated.length <= 2) {
+      return truncated;
+    } else if (truncated.length <= 7) {
+      return `(${truncated.substring(0, 2)}) ${truncated.substring(2)}`;
+    } else if (truncated.length <= 10) {
+      return `(${truncated.substring(0, 2)}) ${truncated.substring(2, 6)}-${truncated.substring(6)}`;
+    } else {
+      return `(${truncated.substring(0, 2)}) ${truncated.substring(2, 7)}-${truncated.substring(7)}`;
+    }
+  };
+
+  // Função para validar apenas letras e espaços
+  const validateOnlyLetters = (value: string) => {
+    return value.replace(/[^a-zA-ZÀ-ÿ\s]/g, '');
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
+    
+    if (type === 'checkbox') {
+      setFormData(prev => ({
+        ...prev,
+        [name]: checked
+      }));
+      return;
+    }
+    
+    let processedValue = value;
+    
+    // Aplicar validações específicas por campo
+    switch (name) {
+      case 'nome':
+      case 'ocupacao':
+        processedValue = validateOnlyLetters(value);
+        break;
+      case 'telefone':
+        processedValue = formatPhoneNumber(value);
+        break;
+    }
+    
     setFormData(prev => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: processedValue
     }));
   };
 
@@ -49,7 +110,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
       {/* Overlay semi-transparente para manter o fundo visível */}
       <div 
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
@@ -57,7 +118,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
       />
       
       {/* Container do popup - mais elegante e moderno */}
-      <div className="relative w-full max-w-[1100px] shadow-2xl rounded-xl overflow-hidden animate-fadeIn">
+      <div className="relative w-full max-w-[1100px] shadow-2xl rounded-xl overflow-hidden animate-fadeIn my-2 sm:my-4">
         {/* Botão de fechar elegante */}
         <button
           onClick={handleClosePopup}
@@ -89,29 +150,29 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
             />
 
             {/* Conteúdo da mensagem de sucesso */}
-            <div className="relative z-10 flex flex-col items-center justify-between min-h-[600px] px-12 py-10">
+            <div className="relative z-10 flex flex-col items-center justify-between min-h-[600px] px-6 sm:px-8 lg:px-12 py-8 sm:py-10">
               {/* Badge BETA no canto superior esquerdo */}
-              <div className="w-full flex justify-start">
-                <span className="bg-[#B69355] text-[#1f2b3b] px-5 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+              <div className="w-full flex justify-start -mt-2 sm:-mt-0">
+                <span className="bg-[#B69355] text-[#1f2b3b] px-4 sm:px-5 py-1.5 sm:py-2 rounded-full text-xs font-bold uppercase tracking-widest">
                   BETA
                 </span>
               </div>
 
               {/* Mensagem de sucesso centralizada */}
-              <div className="max-w-[900px] mx-auto text-center space-y-5 -mt-8">
-                <h2 className="text-[#EEEAD6] text-2xl lg:text-3xl xl:text-4xl font-normal leading-tight mb-6">
+              <div className="max-w-[900px] mx-auto text-center space-y-4 sm:space-y-5 -mt-12 sm:-mt-10 lg:-mt-8">
+                <h2 className="text-[#EEEAD6] text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-normal leading-tight mb-4 sm:mb-6">
                   Inscrição recebida com sucesso!
                 </h2>
                 
-                <p className="text-[#EEEAD6] text-lg lg:text-xl xl:text-2xl font-light leading-relaxed">
+                <p className="text-[#EEEAD6] text-base sm:text-lg lg:text-xl xl:text-2xl font-light leading-relaxed">
                   Obrigado por se cadastrar na lista prioritária de acesso antecipado ao iArremate Legacy.
                 </p>
                 
-                <p className="text-[#EEEAD6] text-base lg:text-lg xl:text-xl font-light leading-relaxed px-8">
+                <p className="text-[#EEEAD6] text-sm sm:text-base lg:text-lg xl:text-xl font-light leading-relaxed px-4 sm:px-8">
                   Em breve, você receberá um e-mail com instruções para ativar sua assinatura e aproveitar os recursos exclusivos antes do lançamento oficial.
                 </p>
                 
-                <p className="text-[#EEEAD6] text-lg lg:text-xl font-normal mt-8 pt-4">
+                <p className="text-[#EEEAD6] text-base sm:text-lg lg:text-xl font-normal mt-6 sm:mt-8 pt-2 sm:pt-4">
                   São poucas vagas.
                 </p>
               </div>
@@ -131,9 +192,9 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
             </div>
           </div>
         ) : (
-          <div className="relative flex flex-col lg:flex-row">
+          <div className="relative flex flex-col lg:flex-row min-h-[500px] sm:min-h-[550px] lg:min-h-[650px]">
           {/* Lado esquerdo com overlay azul e background */}
-          <div className="relative lg:w-[55%] min-h-[300px] lg:min-h-[650px]">
+          <div className="relative lg:w-[55%] min-h-[200px] sm:min-h-[250px] lg:min-h-[650px]">
             {/* Background image */}
             <Image
               src="/images/backgrounds5.png"
@@ -152,31 +213,31 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
             />
 
             {/* Conteúdo do lado esquerdo */}
-            <div className="relative z-10 p-8 lg:p-12 h-full flex flex-col">
+            <div className="relative z-10 px-3 py-4 sm:p-6 lg:p-12 h-full flex flex-col">
               {/* Logo */}
-              <div className="mb-8 lg:mb-12">
+              <div className="mb-4 sm:mb-6 lg:mb-12">
                 <Image
                   src="/images/iArremateLegacyWhite.png"
                   alt="Legacy Logo"
                   width={260}
                   height={40}
-                  className="h-14 lg:h-16 w-auto"
+                  className="h-12 sm:h-14 lg:h-16 w-auto -ml-1"
                   style={{ objectFit: 'contain' }}
                   priority
                 />
               </div>
 
               {/* Textos com melhor hierarquia */}
-              <div className="flex-1 flex flex-col justify-center space-y-6">
-                <h2 className="text-[#B69355] font-bold text-xl lg:text-2xl xl:text-3xl leading-tight uppercase tracking-wide">
+              <div className="flex-1 flex flex-col justify-center space-y-3 sm:space-y-4 lg:space-y-6 px-1">
+                <h2 className="text-[#B69355] font-bold text-base sm:text-lg lg:text-2xl xl:text-3xl leading-tight uppercase tracking-wide">
                   Ao se inscrever, você garante prioridade para assinar o iArremate Legacy antes do lançamento oficial.
                 </h2>
                 
-                <p className="text-[#B69355]/90 text-base lg:text-lg leading-relaxed">
+                <p className="text-[#B69355]/90 text-xs sm:text-sm lg:text-lg leading-relaxed">
                   Esta é uma versão beta, exclusiva para membros fundadores, que poderá receber ajustes e melhorias até a disponibilização final.
                 </p>
 
-                <p className="text-[#B69355]/90 text-base lg:text-lg leading-relaxed">
+                <p className="text-[#B69355]/90 text-xs sm:text-sm lg:text-lg leading-relaxed">
                   Sua participação ajudará a moldar a plataforma que vai redefinir a análise de dados no mercado de arte.
                 </p>
               </div>
@@ -197,8 +258,8 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
             </div>
 
             {/* Formulário elegante */}
-            <form onSubmit={handleSubmit} className="relative z-10 p-8 lg:p-12 h-full flex flex-col justify-center">
-              <div className="space-y-5">
+            <form onSubmit={handleSubmit} className="relative z-10 p-4 sm:p-6 lg:p-12 h-full flex flex-col justify-center">
+              <div className="space-y-3 sm:space-y-4 lg:space-y-5">
                 {/* Nome completo */}
                 <div className="group">
                   <label className="text-gray-600 text-sm font-medium mb-2 block transition-colors group-focus-within:text-[#B69355]">
@@ -210,7 +271,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
                     value={formData.nome}
                     onChange={handleInputChange}
                     placeholder="Digite seu nome completo"
-                    className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
+                    className="w-full px-4 py-2.5 sm:py-3 lg:py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
                     required
                   />
                 </div>
@@ -226,7 +287,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
                     value={formData.email}
                     onChange={handleInputChange}
                     placeholder="seu@email.com"
-                    className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
+                    className="w-full px-4 py-2.5 sm:py-3 lg:py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
                     required
                   />
                 </div>
@@ -242,7 +303,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
                     value={formData.telefone}
                     onChange={handleInputChange}
                     placeholder="(00) 00000-0000"
-                    className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
+                    className="w-full px-4 py-2.5 sm:py-3 lg:py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
                     required
                   />
                 </div>
@@ -258,24 +319,22 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
                     value={formData.ocupacao}
                     onChange={handleInputChange}
                     placeholder="Ex: Colecionador, Galerista, Investidor"
-                    className="w-full px-4 py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
+                    className="w-full px-4 py-2.5 sm:py-3 lg:py-3.5 rounded-lg border border-gray-200 bg-white/95 backdrop-blur-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#B69355]/30 focus:border-[#B69355] transition-all duration-300"
                     required
                   />
                 </div>
 
                 {/* Checkbox de termos elegante */}
-                <div className="flex items-start mt-6 group">
-                  <div className="flex items-center h-5">
-                    <input
-                      type="checkbox"
-                      name="termos"
-                      id="termos"
-                      checked={formData.termos}
-                      onChange={handleInputChange}
-                      className="w-4 h-4 rounded border-gray-300 text-[#B69355] focus:ring-[#B69355] focus:ring-offset-0 transition-colors cursor-pointer"
-                      required
-                    />
-                  </div>
+                <div className="flex items-center mt-4 sm:mt-5 lg:mt-6 group">
+                  <input
+                    type="checkbox"
+                    name="termos"
+                    id="termos"
+                    checked={formData.termos}
+                    onChange={handleInputChange}
+                    className="w-4 h-4 rounded border-gray-300 text-[#B69355] focus:ring-[#B69355] focus:ring-offset-0 transition-colors cursor-pointer flex-shrink-0"
+                    required
+                  />
                   <label htmlFor="termos" className="ml-3 text-xs text-gray-600 cursor-pointer select-none hover:text-gray-800 transition-colors">
                     ACEITO OS TERMOS E A POLÍTICA DE PRIVACIDADE
                   </label>
@@ -284,8 +343,7 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
                 {/* Botão de enviar elegante */}
                 <button
                   type="submit"
-                  className="w-full mt-6 bg-[#B69355] hover:bg-[#9A7F4A] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl uppercase tracking-wider text-sm cursor-pointer"
-                >
+                  className="w-full mt-4 sm:mt-5 lg:mt-6 bg-[#B69355] hover:bg-[#9A7F4A] text-white font-bold py-3 sm:py-3.5 lg:py-4 px-6 rounded-full transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl uppercase tracking-wider text-xs sm:text-sm cursor-pointer">
                   Confirmar inscrição
                 </button>
               </div>

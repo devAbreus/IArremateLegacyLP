@@ -48,8 +48,8 @@ export default function Home() {
           <div className="max-w-[1400px] mx-auto px-6 sm:px-8 md:px-10 lg:px-12 xl:px-16 w-full">
             <div className="max-w-[720px] md:max-w-[800px] lg:max-w-[900px]">
               {/* Main title */}
-              <h1 className="text-[#B69355] font-semibold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-7xl mb-4 sm:mb-6 text-center md:text-left">
-                <span className="md:whitespace-nowrap">O MERCADO DE ARTE COMO VOCÊ</span>
+              <h1 className="text-[#B69355] font-semibold leading-tight text-3xl sm:text-4xl md:text-5xl lg:text-7xl xl:text-7xl mb-4 sm:mb-6 text-left">
+                <span className="md:whitespace-nowrap">O MERCADO DE ARTE COMO VOCÊ</span>{" "}
                 <br className="hidden md:block" />
                 <span className="md:whitespace-nowrap">NUNCA VIU: EM NÚMEROS</span>
               </h1>
@@ -310,9 +310,9 @@ export default function Home() {
 
               {/* Citação destacada */}
               <div className="mb-12 lg:mb-16">
-                <p className="text-[#B69355] text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight font-semibold uppercase">
-                  <span className="block lg:inline">"O IARREMATE LEGACY É O QUE O MERCADO </span>
-                  <span className="block">DE ARTE PRECISAVA PARA DAR O PRÓXIMO PASSO."</span>
+                <p className="text-[#B69355] text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight font-semibold uppercase text-justify lg:text-left">
+                  <span className="block lg:inline">"O IARREMATE LEGACY É O QUE O </span>
+                  <span className="block">MERCADO DE ARTE PRECISAVA PARA DAR O PRÓXIMO PASSO."</span>
                 </p>
               </div>
 
