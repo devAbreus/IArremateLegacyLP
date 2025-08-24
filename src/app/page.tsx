@@ -4,15 +4,37 @@ import { useState, useEffect } from 'react';
 import Image from "next/image";
 import { motion, AnimatePresence } from 'framer-motion';
 import EarlyAccessPopup from '@/components/EarlyAccessPopup';
+import Loader from '@/components/Loader';
 
 export default function Home() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   
-  // Scroll para o topo ao carregar a página
+  // Scroll para o topo ao carregar a página e controle do loader
   useEffect(() => {
     window.scrollTo(0, 0);
+    
+    // Remove o loader após 4 segundos
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 4000);
+    
+    return () => clearTimeout(timer);
   }, []);
+  
+  // Controlar scroll do body durante o loader
+  useEffect(() => {
+    if (isLoading) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isLoading]);
   
   // Monitora o scroll para mostrar/esconder botão
   useEffect(() => {
@@ -39,6 +61,17 @@ export default function Home() {
 
   return (
     <>
+      {/* Loader */}
+      <AnimatePresence>
+        {isLoading && <Loader />}
+      </AnimatePresence>
+      
+      {/* Conteúdo principal com animação de entrada */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
       <div className="min-h-screen relative overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
@@ -540,6 +573,7 @@ export default function Home() {
         </motion.button>
       )}
     </AnimatePresence>
+    </motion.div>
 
     </>
   );
