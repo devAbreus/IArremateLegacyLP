@@ -311,13 +311,13 @@ export default function Home() {
               {/* Citação destacada */}
               <div className="mb-12 lg:mb-16">
                 <p className="text-[#B69355] text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight font-semibold uppercase">
-                  <span className="block">"O IARREMATE LEGACY É O QUE O MERCADO</span>
+                  <span className="block lg:inline">"O IARREMATE LEGACY É O QUE O MERCADO </span>
                   <span className="block">DE ARTE PRECISAVA PARA DAR O PRÓXIMO PASSO."</span>
                 </p>
               </div>
 
-              {/* Botão CTA alinhado à direita */}
-              <div className="flex justify-end">
+              {/* Botão CTA centralizado no mobile, alinhado à direita no desktop */}
+              <div className="flex justify-center lg:justify-end">
                 <button 
                   onClick={() => setIsPopupOpen(true)}
                   className="bg-[#B69355] hover:bg-[#C89A64] text-[#1A1F2E] font-semibold px-8 py-4 text-sm md:text-base rounded-full transition-all duration-300 hover:shadow-lg uppercase tracking-wider cursor-pointer"
