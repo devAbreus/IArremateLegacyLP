@@ -1,5 +1,14 @@
 @import "tailwindcss";
 
+/* Scroll suave global */
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  scroll-behavior: smooth;
+}
+
 :root {
   --background: #EEEAD6;
   --foreground: #222344;

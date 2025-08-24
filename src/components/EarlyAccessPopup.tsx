@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface EarlyAccessPopupProps {
   isOpen: boolean;
@@ -107,18 +108,33 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
     onClose();
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-      {/* Overlay semi-transparente para manter o fundo visível */}
-      <div 
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-        onClick={handleClosePopup}
-      />
-      
-      {/* Container do popup - mais elegante e moderno */}
-      <div className="relative w-full max-w-[1100px] shadow-2xl rounded-xl overflow-hidden animate-fadeIn my-2 sm:my-4">
+    <AnimatePresence>
+      {isOpen && (
+        <motion.div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 overflow-y-auto"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          {/* Overlay semi-transparente para manter o fundo visível */}
+          <motion.div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={handleClosePopup}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+          
+          {/* Container do popup - mais elegante e moderno */}
+          <motion.div 
+            className="relative w-full max-w-[1100px] shadow-2xl rounded-xl overflow-hidden my-2 sm:my-4"
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            transition={{ type: "spring", duration: 0.5 }}
+          >
         {/* Botão de fechar elegante */}
         <button
           onClick={handleClosePopup}
@@ -351,7 +367,9 @@ export default function EarlyAccessPopup({ isOpen, onClose }: EarlyAccessPopupPr
           </div>
           </div>
         )}
-      </div>
-    </div>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 }
