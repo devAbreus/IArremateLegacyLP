@@ -388,7 +388,7 @@ export default function Home() {
                   transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   Com a metodologia auditada e tratada pela <span className="font-bold">EasyData</span>
-                  {" "}e validada por <span className="font-bold">Thierry Chemale</span>, você ganha:
+                  {" "}e validada por <span className="font-bold">Thierry Chemale</span>, Economista da Arte na FGV e Membro TIAMSA , você ganha:
                 </motion.p>
                 
                 <div className="space-y-3">
@@ -521,6 +521,10 @@ export default function Home() {
                 <p className="text-[#B69355] text-lg sm:text-xl md:text-2xl lg:text-3xl leading-tight font-semibold uppercase text-justify lg:text-left">
                   <span className="block lg:inline">&ldquo;O IARREMATE LEGACY É O QUE O </span>
                   <span className="block">MERCADO DE ARTE PRECISAVA PARA DAR O PRÓXIMO PASSO.&rdquo;</span>
+                </p>
+                <p className="text-[#EEEAD6] text-sm sm:text-base md:text-lg lg:text-xl font-normal mt-4 text-justify lg:text-left">
+                  Jones Bergamin,<br />
+                  Marchand, Bolsa de Arte
                 </p>
               </motion.div>
 
